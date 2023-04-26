@@ -1,0 +1,17 @@
+name: Publish container
+on: [push]
+jobs:
+  build-container:
+    name: Build Docker Container image
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Publish to GitHub Packages
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.TOKEN }}
+        repository: $${{ github.repository}}/chatscript-base
+        tags: latest, ${{github.run_number}}
