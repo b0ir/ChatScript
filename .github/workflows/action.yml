@@ -13,5 +13,5 @@ jobs:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.TOKEN }}
-        repository: $${{ github.repository}}/chatscript-base
+        repository: ${{ github.repository}}/chatscript-base
         tags: latest, ${{github.run_number}}
